@@ -34,11 +34,11 @@ for record in data_stream:
 
 ```
 ### EXPLANATION -
-1. The Setup: Python looks at massive_list (["row_1", "row_2", "row_3", "row_4"]).
-2. The Handshake: You run data_stream = stream_large_dataset(massive_list). Nothing prints yet. Python just sets up a stream connection but does not start the loop inside the function.
-3. Loop Turn 1: The for record in data_stream loop starts. It wakes up the function. The function enters its own internal loop, finds row_1, and hits yield row. The function pauses. Control goes back to your main script, and it prints:Processing: row_1
-4. Loop Turn 2: Your main loop asks for the next item. The function wakes up from its pause, moves to the next item in the list (row_2), and hits yield row again. It pauses. Your main script prints:Processing: row_2
-5. Loop Turns 3 & 4: This exact pause-and-resume cycle repeats for row_3 and row_4.
+1. **The Setup:** Python looks at massive_list (["row_1", "row_2", "row_3", "row_4"]).
+2. **The Handshake:** You run data_stream = stream_large_dataset(massive_list). Nothing prints yet. Python just sets up a stream connection but does not start the loop inside the function.
+3. **Loop Turn 1:** The for record in data_stream loop starts. It wakes up the function. The function enters its own internal loop, finds row_1, and hits yield row. The function pauses. Control goes back to your main script, and it prints:Processing: row_1
+4. **Loop Turn 2:** Your main loop asks for the next item. The function wakes up from its pause, moves to the next item in the list (row_2), and hits yield row again. It pauses. Your main script prints:Processing: row_2
+5. **Loop Turns 3 & 4:** This exact pause-and-resume cycle repeats for row_3 and row_4.
 Once row_4 is printed, the function realizes there are no more rows left. It closes down automatically, and the program finishes cleanly.
 
  ### The Difference Between return and yield
